@@ -1,0 +1,119 @@
+<PluginConfig>
+
+   <SupportURL>https://www.zengers.net/indigo/weerlive/</SupportURL>
+
+
+       <!-- WEERLIVE INFO -->
+
+       <Field id="WeerLiveMode" type="checkbox" defaultValue="false"
+              tooltip="Set this checkbox to enable requests to Weerlive">
+         <Label>Retrieve info from Weerlive: </Label>
+      </Field>
+
+      <Field id="ApiKey" type="textfield" visibleBindingId="WeerLiveMode"
+             visibleBindingValue="true">
+         <Label>Your Weerlive Api key: </Label>
+      </Field>
+
+      <Field id="WeerLiveInterval" type="textfield" defaultValue="10"
+         visibleBindingId="WeerLiveMode" visibleBindingValue="true">
+         <Label>Interval between requests: </Label>
+      </Field>
+      <Field id="simpleSeparator1" type="separator"/>
+
+
+      <!-- UV ACTUAL INFO -->
+
+      <Field id="UVindexMode" type="checkbox" defaultValue="false"
+             tooltip="Set this checkbox to enable actual requests to OpenUV.IO">
+         <Label>Retrieve info from OpenUV.io: </Label>
+      </Field>
+
+      <Field id="UVApiKey" type="textfield" visibleBindingId="UVindexMode"
+             visibleBindingValue="true">
+         <Label>Your openuv.io Access Token: </Label>
+      </Field>
+
+      <Field id="UVindexDailyMax" type="textfield" defaultValue="50"
+          tooltip="For the free API use max. 50 calls per day"
+          visibleBindingId="UVindexMode" visibleBindingValue="true">
+         <Label>Max APi calls per day: </Label>
+      </Field>
+
+
+      <!-- UV FORECAST INFO -->
+
+      <Field id="uvforecastMode" type="checkbox" defaultValue="false"
+             tooltip="Set this checkbox to enable forecast requests to OpenUV.IO"
+             visibleBindingId="UVindexMode" visibleBindingValue="true">
+         <Label>Retrieve forecast info from OpenUV.io: </Label>
+      </Field>
+
+      <Field id="uvforecastTime" type="textfield" defaultValue="08:00"
+         tooltip="Time of day in format HH:MM to retrieve new forecast info"
+         visibleBindingId="UVindexMode" visibleBindingValue="true">
+         <Label>Time HH:MM to retrieve UV forecast: </Label>
+      </Field>
+
+      <Field id="simpleSeparator2" type="separator"/>
+
+
+      <!-- BUIENRADAR-->
+
+     <Field id="BuienradarMode" type="checkbox" defaultValue="false"
+         tooltip="Set this checkbox to enable requests to Buienradar">
+         <Label>Retrieve info from BuienRadar: </Label>
+      </Field>
+
+      <Field id="BuienRadarInterval" type="textfield" defaultValue="10"
+         tooltip="Interval for requests to Buienradar. Use a minimum of 10 minutes"
+         visibleBindingId="BuienradarMode" visibleBindingValue="true">
+         <Label>Interval between requests: </Label>
+      </Field>
+
+      <Field id="PlotMode" type="checkbox" defaultValue="false"
+        visibleBindingId="BuienradarMode" visibleBindingValue="true">
+        <Label>Create plot input: </Label>
+      </Field>
+
+     <Field id="simpleSeparator3" type="separator"/>   
+
+
+      <!-- MOONPHASE-->
+
+      <Field id="MoonPhaseMode" type="checkbox" defaultValue="false"
+         tooltip="Set this checkbox to enable moon phase calculations">     
+         <Label>Calculate Moonphase info: </Label>
+      </Field>
+
+      <Field id="MoonLanguage" type="menu" defaultValue="NL"
+        visibleBindingId="MoonPhaseMode" visibleBindingValue="true">
+         <Label>Moon Phase language:</Label>
+         <List>
+            <Option value="NL">Dutch</Option>
+            <Option value="EN">English</Option>
+         </List>
+      </Field>
+      
+      <Field id="simpleSeparator4" type="separator"/>
+
+
+      <!-- GENERAL SETTINGS-->
+
+      <Field id="DaysOfWeek" type="textfield" defaultValue="Monday,Tuesday,WednesDay,Thursday,Friday,Saturday,Sunday"
+         tooltip="Set the days of week in your preferred language, starting with Monday">
+         <Label>Weekdays: </Label>
+      </Field>
+      <Field id="L1" type="label">
+         <Label>Week starts with Monday; separate days with comma</Label>
+      </Field>
+      
+      <Field id="logLevel" type="menu" defaultValue="Normal">
+         <Label>Log Level:</Label>
+         <List>
+            <Option value="Normal">Normal</Option>
+            <Option value="Verbose">Verbose</Option>
+         </List>
+      </Field>
+
+</PluginConfig>

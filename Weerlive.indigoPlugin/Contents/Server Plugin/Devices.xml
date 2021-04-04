@@ -1,0 +1,731 @@
+<?xml version="1.0"?>
+<Devices>
+
+   <!-- ******************************************************************************** -->
+
+   <!-- WEATHER FORECAST DEVICE -->
+
+   <Device type="custom" id="weerlive">
+      <Name>Weerlive</Name>
+
+      <ConfigUI>
+
+        <Field id="wl1" type="label">
+           <Label>Indigo's lattitude and longitude are filled in by default</Label>
+        </Field>
+        <Field id="wlat" type="textfield" defaultValue="51">
+            <Label>Lattitude </Label>
+         </Field>
+         <Field id="wlon" type="textfield" defaultValue="5">
+            <Label>Longitude </Label>
+         </Field>
+      </ConfigUI>
+
+      <States>
+        <State id="plaats">
+           <ValueType>String</ValueType>
+           <TriggerLabel>Town</TriggerLabel>
+           <ControlPageLabel>Town</ControlPageLabel>
+        </State>
+         <State id="temp">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Now Temp</TriggerLabel>
+            <ControlPageLabel>Now Temp</ControlPageLabel>
+         </State>
+         <State id="gtemp">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Now Feels Like</TriggerLabel>
+            <ControlPageLabel>Now Feels Like</ControlPageLabel>
+         </State>
+         <State id="samenv">
+            <ValueType>String</ValueType>
+            <TriggerLabel>Summary</TriggerLabel>
+            <ControlPageLabel>Summary</ControlPageLabel>
+         </State>
+         <State id="lv">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Now Humudity</TriggerLabel>
+            <ControlPageLabel>Now Humudity</ControlPageLabel>
+         </State>
+         <State id="windr">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Now Winddirection</TriggerLabel>
+            <ControlPageLabel>Now Winddirection</ControlPageLabel>
+         </State>
+         <State id="windms">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Now Windspeed (m/s)</TriggerLabel>
+            <ControlPageLabel>Now Windspeed (m/s)</ControlPageLabel>
+         </State>
+         <State id="winds">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Now Windspeed (Bf)</TriggerLabel>
+            <ControlPageLabel>Now Windspeed (Bf))</ControlPageLabel>
+         </State>
+         <State id="windk">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Now Windspeed (Kn)</TriggerLabel>
+            <ControlPageLabel>Now Windspeed (Kn)</ControlPageLabel>
+         </State>
+         <State id="windkmh">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Now Windspeed (Km/h)</TriggerLabel>
+            <ControlPageLabel>Now Windspeed (Km/h)</ControlPageLabel>
+         </State>
+         <State id="luchtd">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Now Pressure (mb)</TriggerLabel>
+            <ControlPageLabel>Now Pressure (mb)</ControlPageLabel>
+         </State>
+         <State id="ldmmhg">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Now Pressure (mm)</TriggerLabel>
+            <ControlPageLabel>Now Pressure (mm)</ControlPageLabel>
+         </State>
+         <State id="dauwp">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Now Dewpoint</TriggerLabel>
+            <ControlPageLabel>Now Dewpoint</ControlPageLabel>
+         </State>
+         <State id="zicht">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Now Visibility</TriggerLabel>
+            <ControlPageLabel>Now Visibility</ControlPageLabel>
+         </State>
+         <State id="verw">
+            <ValueType>String</ValueType>
+            <TriggerLabel>Now Expectation</TriggerLabel>
+            <ControlPageLabel>Now Expectation</ControlPageLabel>
+         </State>
+         <State id="sup">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Sun Up</TriggerLabel>
+            <ControlPageLabel>Sun Up</ControlPageLabel>
+         </State>
+         <State id="sunder">
+            <ValueType>String</ValueType>
+            <TriggerLabel>Sun Under</TriggerLabel>
+            <ControlPageLabel>Sun Under</ControlPageLabel>
+         </State>
+         <State id="image">
+            <ValueType>String</ValueType>
+            <TriggerLabel>image</TriggerLabel>
+            <ControlPageLabel>image</ControlPageLabel>
+         </State>
+
+         <State id="d0day">
+            <ValueType>String</ValueType>
+            <TriggerLabel>Today Day of Week</TriggerLabel>
+            <ControlPageLabel>Today Day of Week</ControlPageLabel>
+         </State>
+         <State id="d0weer">
+            <ValueType>String</ValueType>
+            <TriggerLabel>Today Weather Ico</TriggerLabel>
+            <ControlPageLabel>Today Weather Icon</ControlPageLabel>
+         </State>
+         <State id="d0tmax">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Today MaxTemp</TriggerLabel>
+            <ControlPageLabel>Today MaxTemp</ControlPageLabel>
+         </State>
+         <State id="d0tmin">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Today MinTemp</TriggerLabel>
+            <ControlPageLabel>Today MinTemp</ControlPageLabel>
+         </State>
+         <State id="d0windk">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Today Windspeed (Bf)</TriggerLabel>
+            <ControlPageLabel>Today Windspeed (Bf)</ControlPageLabel>
+         </State>
+         <State id="d0windknp">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Today Windspeed (Kn)</TriggerLabel>
+            <ControlPageLabel>Today Windspeed (Kn)</ControlPageLabel>
+         </State>
+         <State id="d0windms">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Today Windspeed (m/s)</TriggerLabel>
+            <ControlPageLabel>Today Windspeed (m/s)</ControlPageLabel>
+         </State>
+         <State id="d0windkmh">
+           <ValueType>Number</ValueType>
+            <TriggerLabel>Today Windspeed (Km/h)</TriggerLabel>
+            <ControlPageLabel>Today Windspeed (Km/h))</ControlPageLabel>
+         </State>
+         <State id="d0windr">
+           <ValueType>Number</ValueType>
+            <TriggerLabel>Today Winddirection</TriggerLabel>
+            <ControlPageLabel>Today Winddirection</ControlPageLabel>
+         </State>
+         <State id="d0neerslag">
+           <ValueType>Number</ValueType>
+            <TriggerLabel>Today Precip</TriggerLabel>
+            <ControlPageLabel>Today Precip</ControlPageLabel>
+         </State>
+         <State id="d0zon">
+           <ValueType>Number</ValueType>
+            <TriggerLabel>Today Sun %</TriggerLabel>
+            <ControlPageLabel>Today Sun %</ControlPageLabel>
+         </State>
+
+         <State id="d1day">
+            <ValueType>String</ValueType>
+            <TriggerLabel>Tomorrow Day of Week</TriggerLabel>
+            <ControlPageLabel>Tomorrow Day of Week</ControlPageLabel>
+         </State>
+         <State id="d1weer">
+            <ValueType>String</ValueType>
+            <TriggerLabel>Tomorrow Weather Icon</TriggerLabel>
+            <ControlPageLabel>Tomorrow Weather Icon</ControlPageLabel>
+         </State>
+         <State id="d1tmax">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Tomorrow MaxTemp</TriggerLabel>
+            <ControlPageLabel>Tomorrow MaxTemp</ControlPageLabel>
+         </State>
+         <State id="d1tmin">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Tomorrow MinTemp</TriggerLabel>
+            <ControlPageLabel>Tomorrow MinTemp</ControlPageLabel>
+         </State>
+         <State id="d1windk">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Tomorrow Windspeed (Bf)</TriggerLabel>
+            <ControlPageLabel>Tomorrow Windspeed (Bf)</ControlPageLabel>
+         </State>
+         <State id="d1windknp">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Tomorrow Windspeed (Kn)</TriggerLabel>
+            <ControlPageLabel>Tomorrow Windspeed (Kn)</ControlPageLabel>
+         </State>
+         <State id="d1windms">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Tomorrow Windspeed (m/s)</TriggerLabel>
+            <ControlPageLabel>Tomorrow Windspeed (m/s)</ControlPageLabel>
+         </State>
+         <State id="d1windkmh">
+           <ValueType>Number</ValueType>
+            <TriggerLabel>Tomorrow Windspeed (Km/h)</TriggerLabel>
+            <ControlPageLabel>Tomorrow Windspeed (Km/h))</ControlPageLabel>
+         </State>
+         <State id="d1windr">
+           <ValueType>Number</ValueType>
+            <TriggerLabel>Tomorrow Winddirection</TriggerLabel>
+            <ControlPageLabel>Tomorrow Winddirection</ControlPageLabel>
+         </State>
+         <State id="d1neerslag">
+           <ValueType>Number</ValueType>
+            <TriggerLabel>Tomorrow Precip</TriggerLabel>
+            <ControlPageLabel>Tomorrow Precip</ControlPageLabel>
+         </State>
+         <State id="d1zon">
+           <ValueType>Number</ValueType>
+            <TriggerLabel>Tomorrow Sun %</TriggerLabel>
+            <ControlPageLabel>Tomorrow Sun %</ControlPageLabel>
+         </State>
+
+         <State id="d2day">
+            <ValueType>String</ValueType>
+            <TriggerLabel>DayAfterTomorrow Day of Week</TriggerLabel>
+            <ControlPageLabel>DayAfterTomorrow Day of Week</ControlPageLabel>
+         </State>
+         <State id="d2weer">
+            <ValueType>String</ValueType>
+            <TriggerLabel>DayAfterTomorrow Weather Icon</TriggerLabel>
+            <ControlPageLabel>DayAfterTomorrow Weather Icon</ControlPageLabel>
+         </State>
+         <State id="d2tmax">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>DayAfterTomorrow MaxTemp</TriggerLabel>
+            <ControlPageLabel>DayAfterTomorrow MaxTemp</ControlPageLabel>
+         </State>
+         <State id="d2tmin">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>DayAfterTomorrow MinTemp</TriggerLabel>
+            <ControlPageLabel>DayAfterTomorrow MinTemp</ControlPageLabel>
+         </State>
+         <State id="d2windk">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>DayAfterTomorrow Windspeed (Bf)</TriggerLabel>
+            <ControlPageLabel>DayAfterTomorrow Windspeed (Bf)</ControlPageLabel>
+         </State>
+         <State id="d2windknp">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>DayAfterTomorrow Windspeed (Kn)</TriggerLabel>
+            <ControlPageLabel>DayAfterTomorrow Windspeed (Kn)</ControlPageLabel>
+         </State>
+         <State id="d2windms">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>DayAfterTomorrow Windspeed (m/s)</TriggerLabel>
+            <ControlPageLabel>DayAfterTomorrow Windspeed (m/s)</ControlPageLabel>
+         </State>
+         <State id="d2windkmh">
+           <ValueType>Number</ValueType>
+            <TriggerLabel>DayAfterTomorrow Windspeed (Km/h)</TriggerLabel>
+            <ControlPageLabel>DayAfterTomorrow Windspeed (Km/h))</ControlPageLabel>
+         </State>
+         <State id="d2windr"><ValueType>Number</ValueType>
+            <TriggerLabel>DayAfterTomorrow Winddirection</TriggerLabel>
+            <ControlPageLabel>DayAfterTomorrow Winddirection</ControlPageLabel>
+         </State>
+         <State id="d2neerslag">
+           <ValueType>Number</ValueType>
+            <TriggerLabel>DayAfterTomorrow Precip</TriggerLabel>
+            <ControlPageLabel>DayAfterTomorrow Precip</ControlPageLabel>
+         </State>
+         <State id="d2zon">
+           <ValueType>Number</ValueType>
+            <TriggerLabel>DayAfterTomorrow Sun %</TriggerLabel>
+            <ControlPageLabel>DayAfterTomorrow Sun %</ControlPageLabel>
+         </State>
+
+         <State id="alarmtxt">
+            <ValueType>String</ValueType>
+            <TriggerLabel>Alarmtext</TriggerLabel>
+            <ControlPageLabel>Alarmtext</ControlPageLabel>
+         </State>
+
+         <State id="alarm">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Alarmtext Present</TriggerLabel>
+            <ControlPageLabel>Alarmtext Present</ControlPageLabel>
+         </State>
+         
+         <State id="lastSuccessfullRun">
+            <ValueType>String</ValueType>
+            <TriggerLabel>lastSuccessfullRun</TriggerLabel>
+            <ControlPageLabel>lastSuccessfullRun</ControlPageLabel>
+         </State>
+
+         <State id="nextPlannedUpdate">
+            <ValueType>String</ValueType>
+            <TriggerLabel>nextPlannedUpdate</TriggerLabel>
+            <ControlPageLabel>nextPlannedUpdate</ControlPageLabel>
+         </State>
+
+         
+	     </States>
+        <UiDisplayStateId>samenv</UiDisplayStateId>
+   </Device>
+
+   <!-- ******************************************************************************* -->
+
+   <!-- BUIENRADAR -->
+
+
+   <Device type="custom" id="buienradar">
+      <ConfigUI>
+        <Field id="bl1" type="label">
+           <Label>Indigo's lattitude and longitude are filled in by default</Label>
+        </Field>
+        <Field id="blat" type="textfield" defaultValue="51">
+            <Label>Lattitude </Label>
+         </Field>
+         <Field id="blon" type="textfield" defaultValue="5">
+            <Label>Longitude </Label>
+         </Field>
+      </ConfigUI>
+
+      <Name>Buienradar</Name>
+      <States>
+
+         <State id="rain10Minutes">
+            <ValueType>String</ValueType>
+            <TriggerLabel>Rain Next 10 Minutes</TriggerLabel>
+            <ControlPageLabel>Rain Next 10 Minutes</ControlPageLabel>
+         </State>
+
+         <State id="rain60Minutes">
+            <ValueType>String</ValueType>
+            <TriggerLabel>Rain Next 60 Minutes</TriggerLabel>
+            <ControlPageLabel>Rain Next 60 Minutes</ControlPageLabel>
+         </State>  
+
+         <State id="rain120Minutes">
+            <ValueType>String</ValueType>
+            <TriggerLabel>Rain Next 2 hours</TriggerLabel>
+            <ControlPageLabel>Rain Next 2 hours</ControlPageLabel>
+         </State>
+      
+         <State id="lastSuccessfullRun">
+            <ValueType>String</ValueType>
+            <TriggerLabel>lastSuccessfullRun</TriggerLabel>
+            <ControlPageLabel>lastSuccessfullRun</ControlPageLabel>
+         </State>
+
+         <State id="nextPlannedUpdate">
+            <ValueType>String</ValueType>
+            <TriggerLabel>nextPlannedUpdate</TriggerLabel>
+            <ControlPageLabel>nextPlannedUpdate</ControlPageLabel>
+         </State>
+
+     </States>
+     <UiDisplayStateId>rain60Minutes</UiDisplayStateId>
+   </Device>
+
+   <!-- ******************************************************************************* -->
+
+   <!-- UVActual -->
+
+
+   <Device type="custom" id="uv">
+      <Name>UV Actual</Name>
+
+      <ConfigUI>
+        <Field id="ul1" type="label">
+           <Label>Indigo's lattitude and longitude are filled in by default</Label>
+        </Field>
+        <Field id="ulat" type="textfield" defaultValue="51">
+            <Label>Lattitude </Label>
+         </Field>
+         <Field id="ulon" type="textfield" defaultValue="5">
+            <Label>Longitude </Label>
+         </Field>
+      </ConfigUI>
+
+      <States>
+         <State id="uvtime">
+            <ValueType>String</ValueType>
+            <TriggerLabel>Last UV measurement</TriggerLabel>
+            <ControlPageLabel>Last UV measurement</ControlPageLabel>
+         </State>
+
+         <State id="uvindex">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UV Index</TriggerLabel>
+            <ControlPageLabel>UV Index</ControlPageLabel>
+         </State>
+
+         <State id="uvint">
+            <ValueType>Integer</ValueType>
+            <TriggerLabel>UV Index Rounded</TriggerLabel>
+            <ControlPageLabel>UV Index Rounded</ControlPageLabel>
+         </State> 
+
+         <State id="uvname">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UV Index Name</TriggerLabel>
+            <ControlPageLabel>UV Index Name</ControlPageLabel>
+         </State> 
+
+         <State id="uvmax">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UV Max Index</TriggerLabel>
+            <ControlPageLabel>UV Max Index</ControlPageLabel>
+         </State>
+
+         <State id="ozonetime">
+            <ValueType>String</ValueType>
+            <TriggerLabel>Last Ozone measurement</TriggerLabel>
+            <ControlPageLabel>Last Ozone measurement</ControlPageLabel>
+         </State>
+
+         <State id="ozone">
+            <ValueType>String</ValueType>
+            <TriggerLabel>Ozone level</TriggerLabel>
+            <ControlPageLabel>Ozone level</ControlPageLabel>
+         </State>
+
+         <State id="sunsetStart">   
+            <ValueType>String</ValueType>
+            <TriggerLabel>sunset Start</TriggerLabel>
+            <ControlPageLabel>sunset Start</ControlPageLabel>
+         </State>
+
+         <State id="sunriseEnd">   
+            <ValueType>String</ValueType>
+            <TriggerLabel>sunrise End</TriggerLabel>
+            <ControlPageLabel>sunrise End</ControlPageLabel>
+         </State>
+
+         <State id="solarNoon">   
+            <ValueType>String</ValueType>
+            <TriggerLabel>solar Noon</TriggerLabel>
+            <ControlPageLabel>solar Noon</ControlPageLabel>
+         </State>
+
+         <State id="night">   
+            <ValueType>String</ValueType>
+            <TriggerLabel>Night</TriggerLabel>
+            <ControlPageLabel>Night</ControlPageLabel>
+         </State>
+
+         <State id="safe_st1">   
+            <ValueType>String</ValueType>
+            <TriggerLabel>SafeExposure_1</TriggerLabel>
+            <ControlPageLabel>Safe Exposure Type 1</ControlPageLabel>
+         </State>
+         <State id="safe_st2">   
+            <ValueType>String</ValueType>
+            <TriggerLabel>SafeExposure_2</TriggerLabel>
+            <ControlPageLabel>Safe Exposure Type 2</ControlPageLabel>
+         </State>
+         <State id="safe_st3">   
+            <ValueType>String</ValueType>
+            <TriggerLabel>SafeExposure_3</TriggerLabel>
+            <ControlPageLabel>Safe Exposure Type 3</ControlPageLabel>
+         </State>
+         <State id="safe_st4">   
+            <ValueType>String</ValueType>
+            <TriggerLabel>SafeExposure_4</TriggerLabel>
+            <ControlPageLabel>Safe Exposure Type 4</ControlPageLabel>
+         </State>
+         <State id="safe_st5">   
+            <ValueType>String</ValueType>
+            <TriggerLabel>SafeExposure_5</TriggerLabel>
+            <ControlPageLabel>Safe Exposure Type 5</ControlPageLabel>
+         </State>
+         <State id="safe_st6">   
+            <ValueType>String</ValueType>
+            <TriggerLabel>SafeExposure_6</TriggerLabel>
+            <ControlPageLabel>Safe Exposure Type 6</ControlPageLabel>
+         </State>
+
+         <State id="lastSuccessfullRun">
+            <ValueType>String</ValueType>
+            <TriggerLabel>lastSuccessfullRun</TriggerLabel>
+            <ControlPageLabel>lastSuccessfullRun</ControlPageLabel>
+         </State>
+
+         <State id="nextPlannedUpdate">
+            <ValueType>String</ValueType>
+            <TriggerLabel>nextPlannedUpdate</TriggerLabel>
+            <ControlPageLabel>nextPlannedUpdate</ControlPageLabel>
+         </State>
+
+	   </States>
+      <UiDisplayStateId>uvname</UiDisplayStateId>
+   </Device>
+
+  <!-- ******************************************************************************* -->
+
+   <!-- UVForecast -->
+
+   <Device type="custom" id="uvfc">
+      <Name>UV Forecast</Name>
+
+      <ConfigUI>
+        <Field id="fcl1" type="label">
+           <Label>Indigo's lattitude and longitude are filled in by default</Label>
+        </Field>
+        <Field id="fclat" type="textfield" defaultValue="51">
+            <Label>Lattitude </Label>
+         </Field>
+         <Field id="fclon" type="textfield" defaultValue="5">
+            <Label>Longitude </Label>
+         </Field>
+      </ConfigUI>
+         
+      <!-- Hourly Forecast -->
+
+      <States>
+         <State id="UVForeCastHour_00">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UVForeCastHour_00</TriggerLabel>
+            <ControlPageLabel>UVForeCastHour_00</ControlPageLabel>
+         </State>
+         <State id="UVForeCastHour_01">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UVForeCastHour_01</TriggerLabel>
+            <ControlPageLabel>UVForeCastHour_01</ControlPageLabel>
+         </State>
+         <State id="UVForeCastHour_02">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UVForeCastHour_02</TriggerLabel>
+            <ControlPageLabel>UVForeCastHour_02</ControlPageLabel>
+         </State>         
+         <State id="UVForeCastHour_03">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UVForeCastHour_03</TriggerLabel>
+            <ControlPageLabel>UVForeCastHour_03</ControlPageLabel>
+         </State>         
+         <State id="UVForeCastHour_04">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UVForeCastHour_04</TriggerLabel>
+            <ControlPageLabel>UVForeCastHour_04</ControlPageLabel>
+         </State>         
+         <State id="UVForeCastHour_05">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UVForeCastHour_05</TriggerLabel>
+            <ControlPageLabel>UVForeCastHour_05</ControlPageLabel>
+         </State>         
+         <State id="UVForeCastHour_06">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UVForeCastHour_06</TriggerLabel>
+            <ControlPageLabel>UVForeCastHour_06</ControlPageLabel>
+         </State>         
+         <State id="UVForeCastHour_07">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UVForeCastHour_07</TriggerLabel>
+            <ControlPageLabel>UVForeCastHour_07</ControlPageLabel>
+         </State>         
+         <State id="UVForeCastHour_08">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UVForeCastHour_08</TriggerLabel>
+            <ControlPageLabel>UVForeCastHour_08</ControlPageLabel>
+         </State>         
+         <State id="UVForeCastHour_09">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UVForeCastHour_09</TriggerLabel>
+            <ControlPageLabel>UVForeCastHour_09</ControlPageLabel>
+         </State>         
+         <State id="UVForeCastHour_10">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UVForeCastHour_10</TriggerLabel>
+            <ControlPageLabel>UVForeCastHour_10</ControlPageLabel>
+         </State>         
+         <State id="UVForeCastHour_11">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UVForeCastHour_11</TriggerLabel>
+            <ControlPageLabel>UVForeCastHour_11</ControlPageLabel>
+         </State>         
+         <State id="UVForeCastHour_12">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UVForeCastHour_12</TriggerLabel>
+            <ControlPageLabel>UVForeCastHour_12</ControlPageLabel>
+         </State>         
+         <State id="UVForeCastHour_13">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UVForeCastHour_13</TriggerLabel>
+            <ControlPageLabel>UVForeCastHour_13</ControlPageLabel>
+         </State>         
+         <State id="UVForeCastHour_14">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UVForeCastHour_14</TriggerLabel>
+            <ControlPageLabel>UVForeCastHour_14</ControlPageLabel>
+         </State>         
+         <State id="UVForeCastHour_15">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UVForeCastHour_15</TriggerLabel>
+            <ControlPageLabel>UVForeCastHour_15</ControlPageLabel>
+         </State>         
+         <State id="UVForeCastHour_16">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UVForeCastHour_16</TriggerLabel>
+            <ControlPageLabel>UVForeCastHour_16</ControlPageLabel>
+         </State>         
+         <State id="UVForeCastHour_17">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UVForeCastHour_17</TriggerLabel>
+            <ControlPageLabel>UVForeCastHour_17</ControlPageLabel>
+         </State>         
+         <State id="UVForeCastHour_18">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UVForeCastHour_18</TriggerLabel>
+            <ControlPageLabel>UVForeCastHour_18</ControlPageLabel>
+         </State>         
+         <State id="UVForeCastHour_19">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UVForeCastHour_19</TriggerLabel>
+            <ControlPageLabel>UVForeCastHour_19</ControlPageLabel>
+         </State>         
+         <State id="UVForeCastHour_20">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UVForeCastHour_20</TriggerLabel>
+            <ControlPageLabel>UVForeCastHour_20</ControlPageLabel>
+         </State>         
+         <State id="UVForeCastHour_21">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UVForeCastHour_21</TriggerLabel>
+            <ControlPageLabel>UVForeCastHour_21</ControlPageLabel>
+         </State>         
+         <State id="UVForeCastHour_22">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UVForeCastHour_22</TriggerLabel>
+            <ControlPageLabel>UVForeCastHour_22</ControlPageLabel>
+         </State>
+         <State id="UVForeCastHour_23">
+            <ValueType>String</ValueType>
+            <TriggerLabel>UVForeCastHour_23</TriggerLabel>
+            <ControlPageLabel>UVForeCastHour_23</ControlPageLabel>
+         </State> 
+
+         <State id="MaxExpected">
+            <ValueType>String</ValueType>
+            <TriggerLabel>MaxExpected</TriggerLabel>
+            <ControlPageLabel>MaxExpected</ControlPageLabel>
+         </State>
+         <State id="MaxHour">
+            <ValueType>String</ValueType>
+            <TriggerLabel>MaxHour</TriggerLabel>
+            <ControlPageLabel>MaxHour</ControlPageLabel>
+         </State> 
+
+         <State id="lastSuccessfullRun">
+            <ValueType>String</ValueType>
+            <TriggerLabel>lastSuccessfullRun</TriggerLabel>
+            <ControlPageLabel>lastSuccessfullRun</ControlPageLabel>
+         </State>
+
+         <State id="nextPlannedUpdate">
+            <ValueType>String</ValueType>
+            <TriggerLabel>nextPlannedUpdate</TriggerLabel>
+            <ControlPageLabel>nextPlannedUpdate</ControlPageLabel>
+         </State>
+
+	   </States>
+
+   </Device>
+
+   <!-- ******************************************************************************* -->
+
+   <!-- MoonPhase -->
+
+   <Device type="custom" id="moon">
+      <Name>Moon</Name>
+
+       <ConfigUI>
+        <Field id="ml1" type="label">
+           <Label>Indigo's lattitude and longitude are filled in by default</Label>
+        </Field>
+        <Field id="mlat" type="textfield" defaultValue="51">
+            <Label>Lattitude </Label>
+         </Field>
+         <Field id="mlon" type="textfield" defaultValue="5">
+            <Label>Longitude </Label>
+         </Field>
+
+      </ConfigUI>
+
+      <States>
+         <State id="moonPhase">
+            <ValueType>Float</ValueType>
+            <TriggerLabel>Moon Phase</TriggerLabel>
+            <ControlPageLabel>Moon Phase</ControlPageLabel>
+         </State>
+
+         <State id="moonPhaseIcon">
+            <ValueType>String</ValueType>
+            <TriggerLabel>Moon Phase Icon</TriggerLabel>
+            <ControlPageLabel>Moon Phase Icon</ControlPageLabel>
+         </State>
+
+         <State id="moonIconIndex">
+            <ValueType>Integer</ValueType>
+            <TriggerLabel>Moon Phase Icon Index</TriggerLabel>
+            <ControlPageLabel>Moon Phase Icon Index</ControlPageLabel>
+         </State>
+
+         <State id="moonPhaseName">
+            <ValueType>String</ValueType>
+            <TriggerLabel>Moon Phase Name</TriggerLabel>
+            <ControlPageLabel>Moon Phase Name</ControlPageLabel>
+         </State>
+
+         <State id="lastSuccessfullRun">
+            <ValueType>String</ValueType>
+            <TriggerLabel>lastSuccessfullRun</TriggerLabel>
+            <ControlPageLabel>lastSuccessfullRun</ControlPageLabel>
+         </State>
+
+         <State id="nextPlannedUpdate">
+            <ValueType>String</ValueType>
+            <TriggerLabel>nextPlannedUpdate</TriggerLabel>
+            <ControlPageLabel>nextPlannedUpdate</ControlPageLabel>
+         </State>
+
+      </States>
+      <UiDisplayStateId>moonPhaseName</UiDisplayStateId>
+   </Device>
+</Devices>
