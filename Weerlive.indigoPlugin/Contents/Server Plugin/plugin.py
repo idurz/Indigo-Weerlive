@@ -37,6 +37,7 @@
 #    0.9.0  June 8, 2020   First version based on FCIMweather
 #    1.0.0  July 13, 2020  Preparing version for plugin Store
 #    1.0.1  April 4, 2021  Version for Plugin store ready
+#    1.0.2  April 5, 2021  Updated config UI handling
 ##########################################################################################
 
 try:
@@ -195,7 +196,7 @@ class Plugin(indigo.PluginBase):
             return(False, valuesDict, errorDict)
 
       try:
-         time_param = datetime.strptime(valuesDict["uvforecastTime"],"%H:%M")
+         time_param = datetime.datetime.strptime(valuesDict["uvforecastTime"],"%H:%M")
       except:
          errorDict["uvforecastTime"] = "-{}- Use time in 24-hour HH:MM format".format(valuesDict["uvforecastTime"])
          return(False, valuesDict, errorDict)
