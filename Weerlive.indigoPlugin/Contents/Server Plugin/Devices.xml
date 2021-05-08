@@ -330,23 +330,30 @@
       <Name>Buienradar</Name>
       <States>
 
-         <State id="rain10Minutes">
-            <ValueType>String</ValueType>
+         <State id="rain010Minutes">
+            <ValueType>Number</ValueType>
             <TriggerLabel>Rain Next 10 Minutes</TriggerLabel>
             <ControlPageLabel>Rain Next 10 Minutes</ControlPageLabel>
          </State>
 
-         <State id="rain60Minutes">
-            <ValueType>String</ValueType>
+         <State id="rain060Minutes">
+            <ValueType>Number</ValueType>
             <TriggerLabel>Rain Next 60 Minutes</TriggerLabel>
             <ControlPageLabel>Rain Next 60 Minutes</ControlPageLabel>
          </State>  
 
          <State id="rain120Minutes">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>Rain Next 2 hours</TriggerLabel>
             <ControlPageLabel>Rain Next 2 hours</ControlPageLabel>
          </State>
+
+         <State id="rainText">
+            <ValueType>String</ValueType>
+            <TriggerLabel>RainText Received</TriggerLabel>
+            <ControlPageLabel>RainText Received</ControlPageLabel>
+         </State>
+      
       
          <State id="lastSuccessfullRun">
             <ValueType>String</ValueType>
@@ -392,13 +399,13 @@
          </State>
 
          <State id="uvindex">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UV Index</TriggerLabel>
             <ControlPageLabel>UV Index</ControlPageLabel>
          </State>
 
          <State id="uvint">
-            <ValueType>Integer</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UV Index Rounded</TriggerLabel>
             <ControlPageLabel>UV Index Rounded</ControlPageLabel>
          </State> 
@@ -410,7 +417,7 @@
          </State> 
 
          <State id="uvmax">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UV Max Index</TriggerLabel>
             <ControlPageLabel>UV Max Index</ControlPageLabel>
          </State>
@@ -422,7 +429,7 @@
          </State>
 
          <State id="ozone">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>Ozone level</TriggerLabel>
             <ControlPageLabel>Ozone level</ControlPageLabel>
          </State>
@@ -452,44 +459,44 @@
          </State>
 
          <State id="safe_st1">   
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>SafeExposure_1</TriggerLabel>
             <ControlPageLabel>Safe Exposure Type 1</ControlPageLabel>
          </State>
          <State id="safe_st2">   
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>SafeExposure_2</TriggerLabel>
             <ControlPageLabel>Safe Exposure Type 2</ControlPageLabel>
          </State>
          <State id="safe_st3">   
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>SafeExposure_3</TriggerLabel>
             <ControlPageLabel>Safe Exposure Type 3</ControlPageLabel>
          </State>
          <State id="safe_st4">   
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>SafeExposure_4</TriggerLabel>
             <ControlPageLabel>Safe Exposure Type 4</ControlPageLabel>
          </State>
          <State id="safe_st5">   
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>SafeExposure_5</TriggerLabel>
             <ControlPageLabel>Safe Exposure Type 5</ControlPageLabel>
          </State>
          <State id="safe_st6">   
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>SafeExposure_6</TriggerLabel>
             <ControlPageLabel>Safe Exposure Type 6</ControlPageLabel>
          </State>
 
          <State id="lastSuccessfullRun">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>lastSuccessfullRun</TriggerLabel>
             <ControlPageLabel>lastSuccessfullRun</ControlPageLabel>
          </State>
 
          <State id="nextPlannedUpdate">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>nextPlannedUpdate</TriggerLabel>
             <ControlPageLabel>nextPlannedUpdate</ControlPageLabel>
          </State>
@@ -521,133 +528,133 @@
 
       <States>
          <State id="UVForeCastHour_00">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UVForeCastHour_00</TriggerLabel>
             <ControlPageLabel>UVForeCastHour_00</ControlPageLabel>
          </State>
          <State id="UVForeCastHour_01">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UVForeCastHour_01</TriggerLabel>
             <ControlPageLabel>UVForeCastHour_01</ControlPageLabel>
          </State>
          <State id="UVForeCastHour_02">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UVForeCastHour_02</TriggerLabel>
             <ControlPageLabel>UVForeCastHour_02</ControlPageLabel>
          </State>         
          <State id="UVForeCastHour_03">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UVForeCastHour_03</TriggerLabel>
             <ControlPageLabel>UVForeCastHour_03</ControlPageLabel>
          </State>         
          <State id="UVForeCastHour_04">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UVForeCastHour_04</TriggerLabel>
             <ControlPageLabel>UVForeCastHour_04</ControlPageLabel>
          </State>         
          <State id="UVForeCastHour_05">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UVForeCastHour_05</TriggerLabel>
             <ControlPageLabel>UVForeCastHour_05</ControlPageLabel>
          </State>         
          <State id="UVForeCastHour_06">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UVForeCastHour_06</TriggerLabel>
             <ControlPageLabel>UVForeCastHour_06</ControlPageLabel>
          </State>         
          <State id="UVForeCastHour_07">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UVForeCastHour_07</TriggerLabel>
             <ControlPageLabel>UVForeCastHour_07</ControlPageLabel>
          </State>         
          <State id="UVForeCastHour_08">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UVForeCastHour_08</TriggerLabel>
             <ControlPageLabel>UVForeCastHour_08</ControlPageLabel>
          </State>         
          <State id="UVForeCastHour_09">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UVForeCastHour_09</TriggerLabel>
             <ControlPageLabel>UVForeCastHour_09</ControlPageLabel>
          </State>         
          <State id="UVForeCastHour_10">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UVForeCastHour_10</TriggerLabel>
             <ControlPageLabel>UVForeCastHour_10</ControlPageLabel>
          </State>         
          <State id="UVForeCastHour_11">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UVForeCastHour_11</TriggerLabel>
             <ControlPageLabel>UVForeCastHour_11</ControlPageLabel>
          </State>         
          <State id="UVForeCastHour_12">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UVForeCastHour_12</TriggerLabel>
             <ControlPageLabel>UVForeCastHour_12</ControlPageLabel>
          </State>         
          <State id="UVForeCastHour_13">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UVForeCastHour_13</TriggerLabel>
             <ControlPageLabel>UVForeCastHour_13</ControlPageLabel>
          </State>         
          <State id="UVForeCastHour_14">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UVForeCastHour_14</TriggerLabel>
             <ControlPageLabel>UVForeCastHour_14</ControlPageLabel>
          </State>         
          <State id="UVForeCastHour_15">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UVForeCastHour_15</TriggerLabel>
             <ControlPageLabel>UVForeCastHour_15</ControlPageLabel>
          </State>         
          <State id="UVForeCastHour_16">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UVForeCastHour_16</TriggerLabel>
             <ControlPageLabel>UVForeCastHour_16</ControlPageLabel>
          </State>         
          <State id="UVForeCastHour_17">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UVForeCastHour_17</TriggerLabel>
             <ControlPageLabel>UVForeCastHour_17</ControlPageLabel>
          </State>         
          <State id="UVForeCastHour_18">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UVForeCastHour_18</TriggerLabel>
             <ControlPageLabel>UVForeCastHour_18</ControlPageLabel>
          </State>         
          <State id="UVForeCastHour_19">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UVForeCastHour_19</TriggerLabel>
             <ControlPageLabel>UVForeCastHour_19</ControlPageLabel>
          </State>         
          <State id="UVForeCastHour_20">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UVForeCastHour_20</TriggerLabel>
             <ControlPageLabel>UVForeCastHour_20</ControlPageLabel>
          </State>         
          <State id="UVForeCastHour_21">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UVForeCastHour_21</TriggerLabel>
             <ControlPageLabel>UVForeCastHour_21</ControlPageLabel>
          </State>         
          <State id="UVForeCastHour_22">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UVForeCastHour_22</TriggerLabel>
             <ControlPageLabel>UVForeCastHour_22</ControlPageLabel>
          </State>
          <State id="UVForeCastHour_23">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>UVForeCastHour_23</TriggerLabel>
             <ControlPageLabel>UVForeCastHour_23</ControlPageLabel>
          </State> 
 
          <State id="MaxExpected">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>MaxExpected</TriggerLabel>
             <ControlPageLabel>MaxExpected</ControlPageLabel>
          </State>
          <State id="MaxHour">
-            <ValueType>String</ValueType>
+            <ValueType>Number</ValueType>
             <TriggerLabel>MaxHour</TriggerLabel>
             <ControlPageLabel>MaxHour</ControlPageLabel>
          </State> 
@@ -689,28 +696,22 @@
       </ConfigUI>
 
       <States>
-         <State id="moonPhase">
-            <ValueType>Float</ValueType>
-            <TriggerLabel>Moon Phase</TriggerLabel>
-            <ControlPageLabel>Moon Phase</ControlPageLabel>
-         </State>
-
-         <State id="moonPhaseIcon">
+         <State id="PhaseName">
             <ValueType>String</ValueType>
-            <TriggerLabel>Moon Phase Icon</TriggerLabel>
-            <ControlPageLabel>Moon Phase Icon</ControlPageLabel>
+            <TriggerLabel>Phase Name</TriggerLabel>
+            <ControlPageLabel>Phase Name</ControlPageLabel>
          </State>
 
-         <State id="moonIconIndex">
+         <State id="PhaseIconName">
             <ValueType>Integer</ValueType>
-            <TriggerLabel>Moon Phase Icon Index</TriggerLabel>
-            <ControlPageLabel>Moon Phase Icon Index</ControlPageLabel>
+            <TriggerLabel>Phase Icon</TriggerLabel>
+            <ControlPageLabel>Phase Icon</ControlPageLabel>
          </State>
 
-         <State id="moonPhaseName">
-            <ValueType>String</ValueType>
-            <TriggerLabel>Moon Phase Name</TriggerLabel>
-            <ControlPageLabel>Moon Phase Name</ControlPageLabel>
+         <State id="PhaseIconIndex">
+            <ValueType>Integer</ValueType>
+            <TriggerLabel>Phase Icon Index</TriggerLabel>
+            <ControlPageLabel>Phase Icon Index</ControlPageLabel>
          </State>
 
          <State id="lastSuccessfullRun">
@@ -726,6 +727,6 @@
          </State>
 
       </States>
-      <UiDisplayStateId>moonPhaseName</UiDisplayStateId>
+      <UiDisplayStateId>PhaseName</UiDisplayStateId>
    </Device>
 </Devices>

@@ -38,6 +38,11 @@
 #    1.0.0  July 13, 2020  Preparing version for plugin Store
 #    1.0.1  April 4, 2021  Version for Plugin store ready
 #    1.0.2  April 5, 2021  Updated config UI handling
+#    1.0.3  April 8, 2021  Changed Moonphase to Int between 0..100 iso fraction of 1
+#    1.0.4  April 9, 2021  Updated state names to be more in line with content
+#    1.0.5  April 20, 2021 Changed some states from string to number to make triggers smarter
+#    1.0.6  April 29, 2021 Solved bug in rain intensity; should be a 5 minute period
+#    1.0.7  May 1, 2021    Removed rounding for 10,60,120 min sum
 ##########################################################################################
 
 try:
@@ -89,7 +94,6 @@ class Plugin(indigo.PluginBase):
                                  "Afnemende maan", "Laatste kwartier", "Afnemende maansikkel"]
                         ,'EN' : ["New Moon", "Waxing crescent", "First quarter", "Waxing gibbous", "Full Moon", 
                                  "Waning gibbous", "Last quarter", "Waning crescent"]
-                        ,'image': ["new", "waxcr", "first", "waxgi", "full", "wangi", "last", "wancr"]
                   }
 
    def isNumber(self,numberToTest):
@@ -368,17 +372,21 @@ class Plugin(indigo.PluginBase):
       sum60  = 0.0
       sum120 = 0.0 
       fstr = ""
+      raintext = ""
 
       hr = moment.hour
       hrBefore = moment.hour
       minBefore = moment.minute
 
       itercount = 0
+      rlines = ""
       for l in r.text.splitlines():
+         rlines = rlines + l + ","
          itercount += 1
          rainfall , raintime  = l.split("|")
-         raintime = rainfall.strip()
          raintime = raintime.strip()
+         rainfall = rainfall.strip()
+         raintext += rainfall + ";" 
 
          if len(raintime) > 4 and raintime[0:2].isnumeric() and raintime[3:].isnumeric():
             hrBefore = int(raintime[0:2])
@@ -390,7 +398,7 @@ class Plugin(indigo.PluginBase):
          nt = moment.replace(hour=hrBefore, minute=minBefore)
          hr = hrBefore
 
-         intensiteit = 10 ** ((float(rainfall) - 109.0) / 32.0)
+         intensiteit = (10 ** ((float(rainfall) - 109.0) / 32.0)) / 12.0 # Divide by 12 since it is a 5 minute period 
 
          # Add to running total
          if itercount < 3:
@@ -399,16 +407,19 @@ class Plugin(indigo.PluginBase):
             sum60 += intensiteit
          sum120 += intensiteit 
          
-         sum10 = round(sum10,1)
-         sum60 = round(sum60,1)
-         sum120 = round(sum120,1)
-
+         
          # And to plot input file in memory
          fstr += "{},{}\n".format(nt,str(round(intensiteit,2)))
-      
-      dev.updateStatesOnServer([{'key' : 'rain10Minutes',  'value' : sum10, 'uiValue':"{} mm / 10 mn".format(sum10), 'decimalPlaces':1},
-                                {'key' : 'rain60Minutes',  'value' : sum60, 'uiValue':"{} mm / hr".format(sum60), 'decimalPlaces':1},
-                                {'key' : 'rain120Minutes', 'value' : sum120,'uiValue':"{} mm / 2 hr".format(sum120), 'decimalPlaces':1}])
+
+
+      sum10 = round(sum10,3)
+      sum60 = round(sum60,3)
+      sum120 = round(sum120,3)
+      self.verbose("10:{}, 60:{}, 120;{}".format(sum10,sum60,sum120))
+      dev.updateStatesOnServer([{'key' : 'rain010Minutes',  'value' : sum10, 'uiValue':"{} mm / 10 mn".format(sum10), 'decimalPlaces':2},
+                                {'key' : 'rain060Minutes',  'value' : sum60, 'uiValue':"{} mm / hr".format(sum60), 'decimalPlaces':2},
+                                {'key' : 'rain120Minutes',  'value' : sum120,'uiValue':"{} mm / 2 hr".format(sum120), 'decimalPlaces':2},
+                                {'key' : 'rainText',        'value' : raintext}])
 
       # 25 mm / uur is hoosbui
 
@@ -710,8 +721,7 @@ class Plugin(indigo.PluginBase):
 
       index = (pos * dec(8)) + dec("0.5")
       index = math.floor(index)
-      roundedpos = round(float(pos), 3)
-
+      roundedpos = int(100.0 * float(pos))
       moonId = int(index) & 7
 
       # get moonphase and image description
@@ -721,10 +731,9 @@ class Plugin(indigo.PluginBase):
       # Update and finish
       # -------------------
 
-      dev.updateStatesOnServer([ {'key' : 'moonPhase',          'value'  : roundedpos}
-                                ,{'key' : 'moonPhaseIcon',      'value'  : self.languages['image'][moonId]}
-                                ,{'key' : 'moonIconIndex',      'value'  : moonId}
-                                ,{'key' : 'moonPhaseName',      'value'  : self.languages[mylang][moonId]}
+      dev.updateStatesOnServer([ {'key' : 'PhaseIconName',      'value'  : roundedpos}
+                                ,{'key' : 'PhaseIconIndex',     'value'  : moonId}
+                                ,{'key' : 'PhaseName',          'value'  : self.languages[mylang][moonId]}
                                 ,{'key' : 'lastSuccessfullRun', 'value'  : now.strftime("%Y-%m-%d %H:%M")
                                 }])
 
