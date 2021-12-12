@@ -48,9 +48,14 @@
             <ControlPageLabel>Now Humudity</ControlPageLabel>
          </State>
          <State id="windr">
+            <ValueType>String</ValueType>
+            <TriggerLabel>Now Winddirection text</TriggerLabel>
+            <ControlPageLabel>Now Winddirection text</ControlPageLabel>
+         </State>
+         <State id="windrgr">
             <ValueType>Number</ValueType>
-            <TriggerLabel>Now Winddirection</TriggerLabel>
-            <ControlPageLabel>Now Winddirection</ControlPageLabel>
+            <TriggerLabel>Now Winddirection degrees</TriggerLabel>
+            <ControlPageLabel>Now Winddirection degrees</ControlPageLabel>
          </State>
          <State id="windms">
             <ValueType>Number</ValueType>
@@ -71,6 +76,16 @@
             <ValueType>Number</ValueType>
             <TriggerLabel>Now Windspeed (Km/h)</TriggerLabel>
             <ControlPageLabel>Now Windspeed (Km/h)</ControlPageLabel>
+         </State>
+         <State id="windbft">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Now Windspeed (bft)</TriggerLabel>
+            <ControlPageLabel>Now Windspeed (bft)</ControlPageLabel>
+         </State>
+          <State id="windknp">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Now Windspeed (Kn)</TriggerLabel>
+            <ControlPageLabel>Now Windspeed (Kn)</ControlPageLabel>
          </State>
          <State id="luchtd">
             <ValueType>Number</ValueType>
@@ -154,9 +169,14 @@
             <ControlPageLabel>Today Windspeed (Km/h))</ControlPageLabel>
          </State>
          <State id="d0windr">
-           <ValueType>Number</ValueType>
-            <TriggerLabel>Today Winddirection</TriggerLabel>
-            <ControlPageLabel>Today Winddirection</ControlPageLabel>
+           <ValueType>String</ValueType>
+            <TriggerLabel>Today Winddirection text</TriggerLabel>
+            <ControlPageLabel>Today Winddirection text</ControlPageLabel>
+         </State>
+         <State id="d0windrgr">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Today Winddirection degrees</TriggerLabel>
+            <ControlPageLabel>Today Winddirection degrees</ControlPageLabel>
          </State>
          <State id="d0neerslag">
            <ValueType>Number</ValueType>
@@ -210,9 +230,14 @@
             <ControlPageLabel>Tomorrow Windspeed (Km/h))</ControlPageLabel>
          </State>
          <State id="d1windr">
-           <ValueType>Number</ValueType>
-            <TriggerLabel>Tomorrow Winddirection</TriggerLabel>
-            <ControlPageLabel>Tomorrow Winddirection</ControlPageLabel>
+           <ValueType>String</ValueType>
+            <TriggerLabel>Tomorrow Winddirection text</TriggerLabel>
+            <ControlPageLabel>Tomorrow Winddirection text</ControlPageLabel>
+         </State>
+         <State id="d1windrgr">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>Today Winddirection degrees</TriggerLabel>
+            <ControlPageLabel>Today Winddirection degrees</ControlPageLabel>
          </State>
          <State id="d1neerslag">
            <ValueType>Number</ValueType>
@@ -265,9 +290,15 @@
             <TriggerLabel>DayAfterTomorrow Windspeed (Km/h)</TriggerLabel>
             <ControlPageLabel>DayAfterTomorrow Windspeed (Km/h))</ControlPageLabel>
          </State>
-         <State id="d2windr"><ValueType>Number</ValueType>
-            <TriggerLabel>DayAfterTomorrow Winddirection</TriggerLabel>
-            <ControlPageLabel>DayAfterTomorrow Winddirection</ControlPageLabel>
+        <State id="d2windr">
+           <ValueType>String</ValueType>
+            <TriggerLabel>DayAfterTomorrow Winddirection text</TriggerLabel>
+            <ControlPageLabel>DayAfterTomorrow Winddirection text</ControlPageLabel>
+         </State>
+         <State id="d2windrgr">
+            <ValueType>Number</ValueType>
+            <TriggerLabel>DayAfterTomorrow Winddirection degrees</TriggerLabel>
+            <ControlPageLabel>DayAfterTomorrow Winddirection degrees</ControlPageLabel>
          </State>
          <State id="d2neerslag">
            <ValueType>Number</ValueType>

@@ -43,16 +43,17 @@
 #    1.0.5  April 20, 2021 Changed some states from string to number to make triggers smarter
 #    1.0.6  April 29, 2021 Solved bug in rain intensity; should be a 5 minute period
 #    1.0.7  May 1, 2021    Removed rounding for 10,60,120 min sum
-##########################################################################################
+#    1.0.8  May 29, 2021   Changed handling of None for UV date types to prevent errors
+#    1.0.9  Jun 16, 2021   Ignored new device states from Weerlive to prevent errors 
+#    1.1.0  Aug 1, 2021    Type checking before storing data in device. Added timeout to Get
+#    1.1.1  Dec 12, 2021   Soved issue where Buienradar is returning floats in Dutch format
+#########################################################################################
 
 try:
    import datetime
    import math
    import decimal
    import requests
-   # import json
-   # import shutil
-   # import os.path
    import xml.dom.minidom
    libsOk = True
    dec = decimal.Decimal
@@ -251,6 +252,28 @@ class Plugin(indigo.PluginBase):
       offset = datetime.datetime.now() - datetime.datetime.utcnow()
       return (d + offset) # Add offset to UTC time and return it
 
+   def convertTime(self,container, name):
+      ##########################################################################################
+      # Convert received utc time string to local time string if valid
+      ##########################################################################################
+      if name in container and container[name] is not None:
+         try:
+            dt = datetime.datetime.strptime(container[name],'%Y-%m-%dT%H:%M:%S.%fZ')
+         except:
+            return ""
+         
+         tsv = (dt - datetime.datetime(1970, 1, 1)).total_seconds()
+         d = datetime.datetime.utcfromtimestamp(tsv) # get the UTC time from the timestamp integer value.
+
+         # calculate time difference from utcnow and the local system time reported by OS
+         offset = datetime.datetime.now() - datetime.datetime.utcnow()
+      
+         lcl = d + offset
+         return lcl.strftime("%Y-%m-%d %H:%M")
+
+      else: 
+         return ""
+
    def handle_weerlive(self,dev):
       ##########################################################################################
       # Get the lastest Weather information from Weerlive
@@ -277,11 +300,14 @@ class Plugin(indigo.PluginBase):
       self.verbose("Weerlive device {} is requesting {}".format(dev.name, data))
 
       try:
-         r = requests.get(url = data)
+         r = requests.get(url = data, timeout=30, verify=False)
       except requests.exceptions.RequestException as e:
-        self.verbose("Weerlive Get ended with {}".format(e.code))
-        return
-
+        if code in e:
+           self.verbose("Weerlive Get ended with {}".format(e.code))
+        else:
+           raise e
+        return  
+           
       if not r.ok:
          self.verbose("Weerlive Get ended with code {}".format(r.status_code))
          return
@@ -301,7 +327,14 @@ class Plugin(indigo.PluginBase):
       if "liveweer" in rj:
          for m in rj['liveweer']:
             for key in m:
-               dev.updateStateOnServer(key = key, value = m[key])
+               if key in dev.states:
+                  if type(dev.states[key]) is str:
+                     dev.updateStateOnServer(key = key, value = m[key])
+                  else:
+                     dev.updateStateOnServer(key = key, value = m[key] * 1)
+               else:
+                  self.verbose('Key {} (value {}) received but not present in device config; ignored'.format(key,m[key]))
+
                # reset alarm txt if no longer present
                if 'alarm' in m and m['alarm'] == '0':
                   dev.updateStateOnServer(key = 'alarmtxt', value = '')
@@ -354,7 +387,7 @@ class Plugin(indigo.PluginBase):
       self.verbose("BuienRadar device {} is requesting {}".format(dev.name, data))
 
       try:
-         r = requests.get(url = data)
+         r = requests.get(url = data, timeout=30,verify=False)
       except requests.exceptions.RequestException as e:
          self.verbose("BuienRadar Get ended with {}".format(e.code))
          return
@@ -380,6 +413,8 @@ class Plugin(indigo.PluginBase):
 
       itercount = 0
       rlines = ""
+
+
       for l in r.text.splitlines():
          rlines = rlines + l + ","
          itercount += 1
@@ -397,8 +432,9 @@ class Plugin(indigo.PluginBase):
                moment = moment + datetime.timedelta(days=1)
          nt = moment.replace(hour=hrBefore, minute=minBefore)
          hr = hrBefore
-
-         intensiteit = (10 ** ((float(rainfall) - 109.0) / 32.0)) / 12.0 # Divide by 12 since it is a 5 minute period 
+         
+         # Thanks to https://github.com/mjj4791/python-buienradar/pull/13
+         intensiteit = (10 ** ((float(rainfall.replace(',', '.')) - 109.0) / 32.0)) / 12.0 # Divide by 12 since it is a 5 minute period 
 
          # Add to running total
          if itercount < 3:
@@ -410,7 +446,6 @@ class Plugin(indigo.PluginBase):
          
          # And to plot input file in memory
          fstr += "{},{}\n".format(nt,str(round(intensiteit,2)))
-
 
       sum10 = round(sum10,3)
       sum60 = round(sum60,3)
@@ -490,8 +525,11 @@ class Plugin(indigo.PluginBase):
          date_usable = False
          si = 30 # set default minutes
 
-      # Check for daylight. To ensure we are always taling about the same, we remote, y,m,d here
-      # since we are only interested in time. 
+      # -------------------
+      # Check for daylight
+      # -------------------
+      
+      # To ensure we are always talkikng about the same, we remove, y,m,d here since we are only interested in time
       if date_usable:
          moment_hhmm = moment.hour * 60 + moment.minute
          sunriseEnd_hhmm = sunriseEnd.hour * 60 + sunriseEnd.minute
@@ -524,7 +562,7 @@ class Plugin(indigo.PluginBase):
 
       self.verbose("UVactual device {} is requesting {}".format(dev.name, data))
       try: 
-         r = requests.get(url = data, headers = headers)
+         r = requests.get(url = data, headers = headers,timeout=30,verify=False)
       except requests.exceptions.RequestException as e:
          self.verbose("UVactual Get ended with {}".format(e.code))
          return
@@ -555,7 +593,7 @@ class Plugin(indigo.PluginBase):
       keyvalues = []
       if 'uv_time' in res and 'uv' in res:
          lcl = self.utcToLocal(res['uv_time'])
-         keyvalues.append({'key' : 'uvtime', 'value'  : lcl.strftime("%Y-%m-%d %H:%M")})
+         keyvalues.append({'key' : 'uvtime', 'value'  : self.convertTime(res, 'uvtime')})
          keyvalues.append({'key' : 'uvindex', 'value' : round(float(res['uv']), 2)})
 
          intuv = int(math.floor(float(res['uv'])))
@@ -573,9 +611,8 @@ class Plugin(indigo.PluginBase):
          keyvalues.append({'key' : 'uvmax', 'value'  : round(float(res['uv_max']), 2)})
        
       if 'ozone' in res and 'ozone_time' in res:
-         lcl = self.utcToLocal(res['ozone_time'])
          keyvalues.append({'key' : 'ozone', 'value' : res['ozone']})
-         keyvalues.append({'key' :  'ozonetime', 'value' : lcl.strftime("%Y-%m-%d %H:%M")})
+         keyvalues.append({'key' :  'ozonetime', 'value' : self.convertTime(res, 'ozonetime')})
 
       if 'safe_exposure_time' in res: 
          se = res['safe_exposure_time']
@@ -588,18 +625,11 @@ class Plugin(indigo.PluginBase):
          si = res['sun_info']
          if 'sun_times' in si:
             st = si['sun_times']
-            if 'sunriseEnd' in st:
-               lcl = self.utcToLocal(st['sunriseEnd'])
-               keyvalues.append({'key' : 'sunriseEnd', 'value' : lcl.strftime("%Y-%m-%d %H:%M")})
-            if 'sunsetStart' in st:
-               lcl = self.utcToLocal(st['sunsetStart'])
-               keyvalues.append({'key' : 'sunsetStart', 'value' : lcl.strftime("%Y-%m-%d %H:%M")})
-            if 'solarNoon' in st:
-               lcl = self.utcToLocal(st['solarNoon'])
-               keyvalues.append({'key' : 'solarNoon', 'value' : lcl.strftime("%Y-%m-%d %H:%M")})
-            if 'night' in st:
-               lcl = self.utcToLocal(st['night'])
-               keyvalues.append({'key' : 'night', 'value' : lcl.strftime("%Y-%m-%d %H:%M")})
+
+            keyvalues.append({'key' : 'sunriseEnd',  'value' : self.convertTime(st, 'sunriseEnd')})
+            keyvalues.append({'key' : 'sunsetStart', 'value' : self.convertTime(st, 'sunsetStart')})
+            keyvalues.append({'key' : 'solarNoon',   'value' : self.convertTime(st, 'solarNoon')})
+            keyvalues.append({'key' : 'night',       'value' : self.convertTime(st, 'night') } )
 
       # -------------------
       # Update and finish
@@ -643,7 +673,7 @@ class Plugin(indigo.PluginBase):
 
       self.verbose("UVforecast device {} is requesting {}".format(dev.name, data))
       try: 
-         r = requests.get(url = data, headers = headers)
+         r = requests.get(url = data, headers = headers,timeout=30,verify=False)
       except requests.exceptions.RequestException as e:
          self.verbose("UVforecast Get ended with {}".format(e.code))
          return
