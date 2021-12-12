@@ -7,7 +7,7 @@
 	<key>CFBundleName</key>
 	<string>WeerLivePlugin</string>
 	<key>PluginVersion</key>
-	<string>1.0.7</string>
+	<string>1.1.1</string>
 	<key>ServerApiVersion</key>
 	<string>2.0</string>
 	<key>CFBundleDisplayName</key>
