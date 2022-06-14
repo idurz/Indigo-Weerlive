@@ -47,6 +47,7 @@
 #    1.0.9  Jun 16, 2021   Ignored new device states from Weerlive to prevent errors 
 #    1.1.0  Aug 1, 2021    Type checking before storing data in device. Added timeout to Get
 #    1.1.1  Dec 12, 2021   Soved issue where Buienradar is returning floats in Dutch format
+#    2.0.0  Jun 14, 2022   Minor changes for Indigo 2022.1 with Python3 support
 #########################################################################################
 
 try:
